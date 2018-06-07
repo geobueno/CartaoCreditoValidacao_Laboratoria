@@ -1,47 +1,46 @@
-// Função para verificação de números de cartão de crédito inseridos pelo usuário através do algoritmo de Luhn.
+// FunÃ§Ã£o para verificaÃ§Ã£o de nÃºmeros de cartÃ£o de crÃ©dito inseridos pelo usuÃ¡rio atravÃ©s do algoritmo de Luhn.
 function isValidCard(cardNumber) {
  
-  // Condições para entrada de dados de maneira correta através do prompt. Verificação da existência de caracteres diferentes de números e de valor nulo.
-  var cardNumber = prompt("Digite o número do cartão de crédito que deseja consultar");
+  // CondiÃ§Ãµes para entrada de dados de maneira correta atravÃ©s do prompt. VerificaÃ§Ã£o da existÃªncia de caracteres diferentes de nÃºmeros e de valor nulo.
+  var cardNumber = prompt("Digite o nÃºmero do cartÃ£o de crÃ©dito que deseja consultar");
   while (cardNumber.search(/[^0-9]/) !== -1 || cardNumber[0] === undefined || cardNumber.length<14 || cardNumber.length>16) {
-    cardNumber = prompt("Valor incorreto. Digite somente os números do cartão de crédito que deseja consultar");
+    cardNumber = prompt("Valor incorreto. Digite somente os nÃºmeros do cartÃ£o de crÃ©dito que deseja consultar");
   }
   
-  // Variável do tipo array que recebe os valores individuiais de cada caractere do número do cartão de crédito e a inversão da posição dos mesmos.
+  // VariÃ¡vel do tipo array que recebe os valores individuiais de cada caractere do nÃºmero do cartÃ£o de crÃ©dito e a inversÃ£o da posiÃ§Ã£o dos mesmos.
   var arrString = cardNumber.split('');
   arrString.reverse();
 
-  // Variável do tipo array que receberá os valores individuiais de cada caractere do tipo string do número do cartão de crédito transformados em números.
+  // VariÃ¡vel do tipo array que receberÃ¡ os valores individuiais de cada caractere do tipo string do nÃºmero do cartÃ£o de crÃ©dito transformados em nÃºmeros.
   var arrNumber = [];
 
-  // Função para transformar os caracteres do tipo string em números e armazenar na variável arrNumber.
+  // FunÃ§Ã£o para transformar os caracteres do tipo string em nÃºmeros e armazenar na variÃ¡vel arrNumber.
   for (var i in arrString) {
-	arrNumber.push(parseInt(arrString[i]));
+    arrNumber.push(parseInt(arrString[i]));
   }
 
-  // Função para processamento dos números nas posições pares da variável arrNumber através do algoritmo de Lunh.
+  // FunÃ§Ã£o para processamento dos nÃºmeros nas posiÃ§Ãµes pares da variÃ¡vel arrNumber atravÃ©s do algoritmo de Lunh.
   for (var i = 1; i < arrNumber.length; i += 2){
-	if ((arrNumber[i] * 2) > 9) {
-	  arrNumber[i] = (Math.trunc((arrNumber[i] * 2) / 10)) + ((arrNumber[i] * 2) % 10);
-	} else {
-	    arrNumber[i] = arrNumber[i] * 2;
-	}
+    if ((arrNumber[i] * 2) > 9) {
+      arrNumber[i] = (Math.trunc((arrNumber[i] * 2) / 10)) + ((arrNumber[i] * 2) % 10);
+    } else {
+      arrNumber[i] = arrNumber[i] * 2;
+    }
   }
 
-  // Função para soma de todos os números da variável arrNumber pós processada.
+  // FunÃ§Ã£o para soma de todos os nÃºmeros da variÃ¡vel arrNumber pÃ³s processada.
   for (var i = 0, sum = 0; i < arrNumber.length; sum += arrNumber[i++]){}
 
-  // Inserção do número do cartão de crédito no HTML.
+  // InserÃ§Ã£o do nÃºmero do cartÃ£o de crÃ©dito no HTML.
   document.getElementById('cardNumber').innerHTML = cardNumber;
 
-  // Condição final para validação do número de cartão de credito inserido pelo usuário.
+  // CondiÃ§Ã£o final para validaÃ§Ã£o do nÃºmero de cartÃ£o de credito inserido pelo usuÃ¡rio.
   if (sum % 10 === 0) {
-	return document.getElementById('validation').innerHTML = ' Válido';
+    return document.getElementById('validation').innerHTML = ' VÃ¡lido';
   } else {
-	  return document.getElementById('validation').innerHTML = ' Inválido';
+    return document.getElementById('validation').innerHTML = ' InvÃ¡lido';
   }
-  
 }
 
-// Chamada da função isValidCard.
+// Chamada da funÃ§Ã£o isValidCard.
 isValidCard('0');
