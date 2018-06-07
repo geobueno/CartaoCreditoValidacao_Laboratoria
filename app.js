@@ -24,7 +24,7 @@ function isValidCard(cardNumber) {
     if ((arrNumber[i] * 2) > 9) {
       arrNumber[i] = (Math.trunc((arrNumber[i] * 2) / 10)) + ((arrNumber[i] * 2) % 10);
     } else {
-      arrNumber[i] = arrNumber[i] * 2;
+        arrNumber[i] = arrNumber[i] * 2;
     }
   }
 
