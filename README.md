@@ -2,8 +2,6 @@ Programa de validação de cartão de crédito através do algoritmo de Luhn.
 
 Início
 
-- É aberta uma página HTML (index.html) e um prompt é inicializado pedindo que o usuário insira os números do cartão de crédito que deseja validar;
-
 - No arquivo java script (app.js)  é chamada a função para validação do número (function isValidCard(cardNumber) {}) com parâmetro inicial nulo (isValidCard('0')); 
 
 - A função através do prompt pede ao usuário que digite uma mensagem a ser codificada:
