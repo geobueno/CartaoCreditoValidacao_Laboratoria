@@ -1,38 +1,38 @@
-Programa de validação de cartão de crédito através do algoritmo de Luhn.
+Programa de validaÃ§Ã£o de cartÃ£o de crÃ©dito atravÃ©s do algoritmo de Luhn.
 
-Início
+InÃ­cio
 
-- É aberta uma página HTML (index.html) e um prompt é inicializado pedindo que o usuário insira os números do cartão de crédito que deseja validar;
+- Ã‰ aberta uma pÃ¡gina HTML (index.html) e um prompt Ã© inicializado pedindo que o usuÃ¡rio insira os nÃºmeros do cartÃ£o de crÃ©dito que deseja validar;
 
-- No arquivo java script (app.js)  é chamada a função para validação do número (function isValidCard(cardNumber) {}) com parâmetro inicial nulo (isValidCard('0')); 
+- No arquivo java script (app.js)  Ã© chamada a funÃ§Ã£o para validaÃ§Ã£o do nÃºmero (function isValidCard(cardNumber) {}) com parÃ¢metro inicial nulo (isValidCard('0')); 
 
-- A função através do prompt pede ao usuário que digite uma mensagem a ser codificada:
+- A funÃ§Ã£o atravÃ©s do prompt pede ao usuÃ¡rio que digite uma mensagem a ser codificada:
 
-var cardNumber = prompt("Digite o número do cartão de crédito que deseja consultar");
+var cardNumber = prompt("Digite o nÃºmero do cartÃ£o de crÃ©dito que deseja consultar");
 
-- A mensagem deve conter apenas números, não ser vazia e ter entre 14 e 16 números. Enquanto a condição não for satisfeita o processo permanece em loop: 
+- A mensagem deve conter apenas nÃºmeros, nÃ£o ser vazia e ter entre 14 e 16 nÃºmeros. Enquanto a condiÃ§Ã£o nÃ£o for satisfeita o processo permanece em loop: 
 
 while (cardNumber.search(/[^0-9]/) !== -1 || cardNumber[0] === undefined || cardNumber.length<14 || cardNumber.length>16) {
-    cardNumber = prompt("Valor incorreto. Digite somente os números do cartão de crédito que deseja consultar");
+    cardNumber = prompt("Valor incorreto. Digite somente os nÃºmeros do cartÃ£o de crÃ©dito que deseja consultar");
   }.
 
-Processamento de validação
+Processamento de validaÃ§Ã£o
 
-- Quando a condição de entrada de mensagem é satisfeita são declaradas as variáveis que serão utilizadas no processamento e algumas funções já são aplicadas:
+- Quando a condiÃ§Ã£o de entrada de mensagem Ã© satisfeita sÃ£o declaradas as variÃ¡veis que serÃ£o utilizadas no processamento e algumas funÃ§Ãµes jÃ¡ sÃ£o aplicadas:
 
-1- É criada uma variável do tipo array que receberá os valores dos números digitados divididos através da função Array.prototype.split()   (var arrString = cardNumber.split('')) ;
-2- O string contendo os valores divididos tem ordem dos valores invertidos através da função Array.prototype.reverse ()  (arrString.reverse()); 
-3- É criada uma variável do tipo array que receberá os strings do array anterior transformados em números (var arrNumber = []);
+1- Ã‰ criada uma variÃ¡vel do tipo array que receberÃ¡ os valores dos nÃºmeros digitados divididos atravÃ©s da funÃ§Ã£o Array.prototype.split()   (var arrString = cardNumber.split('')) ;
+2- O string contendo os valores divididos tem ordem dos valores invertidos atravÃ©s da funÃ§Ã£o Array.prototype.reverse ()  (arrString.reverse()); 
+3- Ã‰ criada uma variÃ¡vel do tipo array que receberÃ¡ os strings do array anterior transformados em nÃºmeros (var arrNumber = []);
 
-- O processo de validação  é executado da seguinte maneira:
+- O processo de validaÃ§Ã£o  Ã© executado da seguinte maneira:
 
-1- Uma função percorre cada um dos strings do arrString e o arrNumber recebe cada um desses valores convertidos para números inteiros para cálculo das equações de validação.
+1- Uma funÃ§Ã£o percorre cada um dos strings do arrString e o arrNumber recebe cada um desses valores convertidos para nÃºmeros inteiros para cÃ¡lculo das equaÃ§Ãµes de validaÃ§Ã£o.
   for (var i in arrString) {
 	arrNumber.push(parseInt(arrString[i]));};
 
-2- Uma função percorre as posições pares do array com os números inteiros e sao testadas condições para os valores contidos nessas posições.
-Se o número estiver na posição par do array multiplicado por 2 for maior que 9 uma operação é executada, caso contrario outra operacao é executada e as
-posicoes do array recebem os valores resultantes dessas operaçcões:
+2- Uma funÃ§Ã£o percorre as posiÃ§Ãµes pares do array com os nÃºmeros inteiros e sao testadas condiÃ§Ãµes para os valores contidos nessas posiÃ§Ãµes.
+Se o nÃºmero estiver na posiÃ§Ã£o par do array multiplicado por 2 for maior que 9 uma operaÃ§Ã£o Ã© executada, caso contrario outra operacao Ã© executada e as
+posicoes do array recebem os valores resultantes dessas operaÃ§cÃµes:
 
 for (var i = 1; i < arrNumber.length; i += 2){
 if ((arrNumber[i] * 2) > 9) {
@@ -42,19 +42,20 @@ else {
 	}
 };
 
-5- Finalizados esses passos é feita a soma de todos os números do array resultante dos processos anteriores através do seguinte comando:
+5- Finalizados esses passos Ã© feita a soma de todos os nÃºmeros do array resultante dos processos anteriores atravÃ©s do seguinte comando:
 for (var i = 0, sum = 0; i < arrNumber.length; sum += arrNumber[i++]){};
 
-6- É executado o processo de validação do número de cartão de crédito, se o modulo da soma dos números do array processado por 10 for nulo o cartão é valido, 
-caso contrario inválido. As mensagens são retornadas para o usuário no HTML com essas informações:
+6- Ã‰ executado o processo de validaÃ§Ã£o do nÃºmero de cartÃ£o de crÃ©dito, se o modulo da soma dos nÃºmeros do array processado por 10 for nulo o cartÃ£o Ã© valido, 
+caso contrario invÃ¡lido. As mensagens sÃ£o retornadas para o usuÃ¡rio no HTML com essas informaÃ§Ãµes:
 
 document.getElementById('cardNumber').innerHTML = cardNumber;
 if (sum % 10 === 0) {
-	return document.getElementById('validation').innerHTML = ' Válido';
+	return document.getElementById('validation').innerHTML = ' VÃ¡lido';
   } else {
-	  return document.getElementById('validation').innerHTML = ' Inválido';
+	  return document.getElementById('validation').innerHTML = ' InvÃ¡lido';
   }
 
 
 Fim do processo
 
+![Fluxograma](CartaoCreditoFluxograma.png)
